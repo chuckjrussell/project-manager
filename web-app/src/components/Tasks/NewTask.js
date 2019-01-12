@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import '@coreui/coreui';
-import {Button, Modal} from 'react-bootstrap';
+import {Button, Modal, FormGroup, ControlLabel, HelpBlock} from 'react-bootstrap';
 import InputGroup from '../common/forms/InputGroup';
+import DayPicker from 'react-day-picker/DayPickerInput';
+
+import 'react-day-picker/lib/style.css';
+import './NewTask.css';
+
+import DayPickerInput from 'react-day-picker/DayPickerInput';
 
 class NewTask extends Component{
 
@@ -15,18 +21,24 @@ class NewTask extends Component{
         this.state = {
             show: false,
             title: '',
-            description: ''
+            description: '',
+            dueDate:'',
+            formattedDueDate:'',
+            assignee: 1
         }
 
         this.handleTitleChanged = this.handleTitleChanged.bind(this);
         this.handleDescriptionChanged = this.handleDescriptionChanged.bind(this);
+        this.handleDateChanged = this.handleDateChanged.bind(this);
     }
 
     handleClose() {
         this.setState({ 
             show: false, 
             title: '',
-            description: ''
+            description: '',
+            dueDate: new Date(),
+            formattedDueDate: ''
         });
     }
   
@@ -40,6 +52,17 @@ class NewTask extends Component{
 
     handleDescriptionChanged(e) {
         this.setState({ description: e.target.value });
+    }
+
+    handleSave(){
+        this.handleClose();
+    }
+
+    handleDateChanged(value, formattedValue) {
+        this.setState({
+            dueDate: value, // ISO String, ex: "2016-11-19T12:00:00.000Z"
+            formattedDueDate: formattedValue // Formatted String, ex: "11/19/2016"
+        });
     }
 
     render(){
@@ -67,11 +90,24 @@ class NewTask extends Component{
                             placeholder="Description"
                             value={this.state.description}
                             onChange={this.handleDescriptionChanged}/>
+
+                        <FormGroup>
+                            <ControlLabel>Due Date</ControlLabel>
+                            <DayPickerInput/>
+                        </FormGroup>
             
+                        <FormGroup>
+                            <ControlLabel>Assignee</ControlLabel>
+                            <select className="form-control" value={this.assignee} readOnly>
+                                <option value="1" key="1">Cassie Russell</option>
+                                <option value="2" key="2">Chuck Russell</option>
+                            </select>
+                        </FormGroup>
                         
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={this.handleClose}>Close</Button>
+                        <Button onClick={this.handleClose}>Cancel</Button>
+                        <Button className="btn btn-success my-2 my-sm-0" onClick={this.handleSave}>Save</Button>
                     </Modal.Footer>
                 </Modal>
                 </div>
