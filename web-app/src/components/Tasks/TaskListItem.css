@@ -1,0 +1,12 @@
+.description-border-error { 
+    border-left: 4px solid #f86c6b; 
+    border-radius: .25rem;
+}
+.description-border-warning { 
+    border-left: 4px solid #ffc107; 
+    border-radius: .25rem;
+}
+
+.table td {
+    vertical-align: baseline;
+}
