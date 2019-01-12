@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import '@coreui/coreui';
-import './TaskListItem.css'
-import {Dropdown, MenuItem} from 'react-bootstrap'
+import './TaskListItem.css';
 
 var classNames = require('classnames');
 
