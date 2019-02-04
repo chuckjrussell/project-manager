@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import TasksHeader from './TasksHeader';
 import TaskList from './TaskList';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 import {Route} from 'react-router';
 
 class Tasks extends Component{
@@ -11,10 +11,13 @@ class Tasks extends Component{
         return(
             <div>
                 <BrowserRouter>
-                <div className="container">
-                    <TasksHeader title="Tasks"/>
-                    <Route path='/' component={TaskList} />
-                </div>
+                    <div className="container">
+                        <TasksHeader title="Tasks"/>
+                        <Switch>
+                            <Route path='/' component={TaskList} />
+                            <Route path='/:id' component={TaskList} />
+                        </Switch>
+                    </div>
                 </BrowserRouter>
                 
             </div>

@@ -1,25 +1,9 @@
 import React, { Component } from 'react';
 import TaskListItem from './TaskListItem'
 import '@coreui/coreui';
+import {connect} from 'react-redux';
 
 class TaskList extends Component{
-
-    tasks = [{
-        id: 1, 
-        description: "Duis aute irure dolor in reprehenderit", 
-        dueDate: "11-8-2018", 
-        assignee: "Cassie", 
-        category: 2, 
-        status: 1
-      },{
-        id: 2, 
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", 
-        dueDate: "11-8-2018", 
-        assignee: "Chuck", 
-        category: 2, 
-        status: 3
-      }
-    ];
 
     statuses = [{
         id: 1, 
@@ -50,7 +34,7 @@ class TaskList extends Component{
                     </thead>
                     <tbody>
                         {
-                            this.tasks.map((task) => {
+                            this.props.tasks.map((task) => {
                                 return (
                                     <TaskListItem task={task} statuses={this.statuses} key={task.id}/>
                                 );
@@ -63,4 +47,10 @@ class TaskList extends Component{
     };
 }
 
-export default TaskList;
+function mapStateToProps(state, ownProps){
+    return {
+        tasks: state.tasks
+    }
+};
+
+export default connect(mapStateToProps)(TaskList);

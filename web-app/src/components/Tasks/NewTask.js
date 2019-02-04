@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import '@coreui/coreui';
-import {Button, Modal, FormGroup, ControlLabel, HelpBlock} from 'react-bootstrap';
+import {Button, Modal, FormGroup, ControlLabel} from 'react-bootstrap';
 import InputGroup from '../common/forms/InputGroup';
-import DayPicker from 'react-day-picker/DayPickerInput';
-
 import 'react-day-picker/lib/style.css';
 import './NewTask.css';
-
+import {connect} from 'react-redux';
+import * as taskActions from '../../actions/taskActions';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 
 class NewTask extends Component{
@@ -17,14 +16,17 @@ class NewTask extends Component{
 
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.handleSave = this.handleSave.bind(this);
 
         this.state = {
             show: false,
-            title: '',
-            description: '',
-            dueDate:'',
-            formattedDueDate:'',
-            assignee: 1
+            task: {
+                title: '',
+                description: '',
+                dueDate:'',
+                formattedDueDate:'',
+                assignee: 1
+            }
         }
 
         this.handleTitleChanged = this.handleTitleChanged.bind(this);
@@ -47,14 +49,19 @@ class NewTask extends Component{
     }
 
     handleTitleChanged(e) {
-        this.setState({ title: e.target.value });
+        const task = this.state.task;
+        task.title = e.target.value;
+        this.setState({ task: task });
     }
 
     handleDescriptionChanged(e) {
-        this.setState({ description: e.target.value });
+        const task = this.state.task;
+        task.description = e.target.value;
+        this.setState({ task: task });
     }
 
     handleSave(){
+        this.props.dispatch(taskActions.createTask(this.state.task));
         this.handleClose();
     }
 
@@ -79,16 +86,16 @@ class NewTask extends Component{
                     <Modal.Body>
                         <InputGroup id="formControlsText"
                             type="text"
-                            label="Text"
+                            label="Title"
                             placeholder="Title"
-                            value={this.state.title}
+                            value={this.state.task.title}
                             onChange={this.handleTitleChanged}/>
 
                         <InputGroup id="formControlsText"
                             componentClass="textarea"
                             label="Description"
                             placeholder="Description"
-                            value={this.state.description}
+                            value={this.state.task.description}
                             onChange={this.handleDescriptionChanged}/>
 
                         <FormGroup>
@@ -98,7 +105,7 @@ class NewTask extends Component{
             
                         <FormGroup>
                             <ControlLabel>Assignee</ControlLabel>
-                            <select className="form-control" value={this.assignee} readOnly>
+                            <select className="form-control" value={this.state.task.assignee} readOnly>
                                 <option value="1" key="1">Cassie Russell</option>
                                 <option value="2" key="2">Chuck Russell</option>
                             </select>
@@ -115,4 +122,8 @@ class NewTask extends Component{
     };
 }
 
-export default NewTask;
+function mapStateToProps(state, ownProps){
+    return {}
+}
+
+export default connect(mapStateToProps)(NewTask);
