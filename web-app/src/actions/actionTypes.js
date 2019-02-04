@@ -1,1 +1,2 @@
 export const CREATE_TASK = 'CREATE_TASK';
+export const LOAD_TASK_SUCCESS = 'LOAD_TASK_SUCCESS';
