@@ -5,6 +5,17 @@ import './TaskListItem.css';
 var classNames = require('classnames');
 
 class TaskListItem extends Component {
+
+    constructor(props, context){
+        super(props, context);
+
+        var user = props.users.filter(u => u.id === this.props.task.assignee)[0];
+
+        this.state = {
+            userName: user.firstName + ' ' + user.lastName
+        }
+    }
+
     render(){
 
         var classes = classNames({
@@ -17,7 +28,7 @@ class TaskListItem extends Component {
                 <td className={classes}>
                     {this.props.task.description}
                 </td>
-                <td>{this.props.task.assignee}</td>
+                <td>{this.state.userName}</td>
                 <td>{this.props.task.dueDate}</td>
                 <td>
                     <select className="form-control" value={this.props.task.status} readOnly>

@@ -18,3 +18,11 @@ export function loadTasks() {
         });
     }
 }
+
+export function saveTask(task) {
+    return function(dispatch) {
+        return taskApi.saveTask(task).then(task => {
+            dispatch()
+        })
+    }
+}

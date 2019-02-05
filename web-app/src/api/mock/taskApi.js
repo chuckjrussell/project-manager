@@ -4,20 +4,18 @@ const tasks = [{
     id: 1, 
     description: "Duis aute irure dolor in reprehenderit", 
     dueDate: "11-8-2018", 
-    assignee: "Cassie", 
+    assignee: 1, 
     category: 2, 
     status: 1
   },{
     id: 2, 
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", 
     dueDate: "11-8-2018", 
-    assignee: "Chuck", 
+    assignee: 2, 
     category: 2, 
     status: 3
   }
 ];
-
-
 
 function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
@@ -46,7 +44,7 @@ class TaskApi {
                 }
 
                 if( task.id ){
-                    var taskIndex = tasks.findIndex(t => t.id == task.id);
+                    var taskIndex = tasks.findIndex(t => t.id === task.id);
                     tasks.splice(taskIndex, 1, task);
                 }
                 else {

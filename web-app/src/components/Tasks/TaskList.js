@@ -5,20 +5,6 @@ import {connect} from 'react-redux';
 
 class TaskList extends Component{
 
-    statuses = [{
-        id: 1, 
-        status: "In Progress"
-    },{
-        id: 2, 
-        status: "Blocked"
-    },{
-        id: 3, 
-        status: "To Do"
-    },{
-        id: 4, 
-        status: "Done"
-    }];
-
     render(){
         return(
             <div>
@@ -36,7 +22,7 @@ class TaskList extends Component{
                         {
                             this.props.tasks.map((task) => {
                                 return (
-                                    <TaskListItem task={task} statuses={this.statuses} key={task.id}/>
+                                    <TaskListItem task={task} statuses={this.props.statuses} users={this.props.users} key={task.id}/>
                                 );
                             })
                         }
@@ -49,7 +35,9 @@ class TaskList extends Component{
 
 function mapStateToProps(state, ownProps){
     return {
-        tasks: state.tasks
+        tasks: state.tasks,
+        statuses: state.statuses,
+        users: state.users
     }
 };
 
