@@ -1,16 +1,16 @@
 import delay from './delay';
 
 const statuses = [{
-    id: 1, 
+    id: '1', 
     status: "In Progress"
 },{
-    id: 2, 
+    id: '2', 
     status: "Blocked"
 },{
-    id: 3, 
+    id: '3', 
     status: "To Do"
 },{
-    id: 4, 
+    id: '4', 
     status: "Done"
 }];
 

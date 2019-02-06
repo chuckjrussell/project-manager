@@ -8,19 +8,16 @@ class TaskListItem extends Component {
 
     constructor(props, context){
         super(props, context);
-
-        var user = props.users.filter(u => u.id === this.props.task.assignee)[0];
-
         this.state = {
-            userName: user.firstName + ' ' + user.lastName
+            user: props.users.filter(u => u.id === this.props.task.assignee)[0]
         }
     }
 
     render(){
 
         var classes = classNames({
-            'description-border-error': this.props.task.status === 3, //blocked
-            'description-border-warning': this.props.task.status === 1 //blocked
+            'description-border-error': this.props.task.status === '3', //blocked
+            'description-border-warning': this.props.task.status === '1' //in progress
         });
 
         return (
@@ -28,7 +25,7 @@ class TaskListItem extends Component {
                 <td className={classes}>
                     {this.props.task.description}
                 </td>
-                <td>{this.state.userName}</td>
+                <td>{this.state.user.firstName + ' ' + this.state.user.lastName}</td>
                 <td>{this.props.task.dueDate}</td>
                 <td>
                     <select className="form-control" value={this.props.task.status} readOnly>

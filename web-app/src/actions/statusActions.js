@@ -1,5 +1,5 @@
 import * as actions from './actionTypes';
-import statusApi from '../api/mock/statusApi';
+import statusApi from '../api/tasks/statusApi';
 
 export function loadStatusesSuccess(statuses){
     return {type: actions.LOAD_STATUSES_SUCCESS, statuses};

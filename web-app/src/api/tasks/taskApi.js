@@ -4,16 +4,16 @@ const tasks = [{
     id: 1, 
     description: "Duis aute irure dolor in reprehenderit", 
     dueDate: "11-8-2018", 
-    assignee: 1, 
-    category: 2, 
-    status: 1
+    assignee: "1", 
+    category: "2", 
+    status: "1"
   },{
     id: 2, 
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit", 
     dueDate: "11-8-2018", 
-    assignee: 2, 
-    category: 2, 
-    status: 3
+    assignee: "2", 
+    category: "2", 
+    status: "3"
   }
 ];
 

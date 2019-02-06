@@ -1,5 +1,5 @@
 import * as actions from './actionTypes';
-import taskApi from '../api/mock/taskApi';
+import taskApi from '../api/tasks/taskApi';
 
 export function createTask(task) {
     return {type: actions.CREATE_TASK, task};

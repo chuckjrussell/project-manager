@@ -9,6 +9,7 @@ const Header = () => {
                 <a className="navbar-brand" href="/">Planner</a>
                 <NavLink exact to="/" className="nav-item nav-link" activeClassName="active">Home</NavLink>
                 <NavLink to="/tasks" className="nav-item nav-link" activeClassName="active">Tasks</NavLink>
+                <NavLink to="/budget" className="nav-item nav-link" activeClassName="active">Budget</NavLink>
             </div>
 
             <div className="form-inline my-2 my-lg-0">

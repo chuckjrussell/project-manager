@@ -1,5 +1,5 @@
 import * as actions from './actionTypes';
-import userApi from '../api/mock/userApi';
+import userApi from '../api/users/userApi';
 
 export function loadUsersSuccess(users){
     return {type: actions.LOAD_USERS_SUCCESS, users};

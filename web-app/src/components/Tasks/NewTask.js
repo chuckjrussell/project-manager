@@ -7,6 +7,7 @@ import './NewTask.css';
 import {connect} from 'react-redux';
 import * as taskActions from '../../actions/taskActions';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
+import moment from 'moment';
 
 class NewTask extends Component{
 
@@ -31,8 +32,8 @@ class NewTask extends Component{
                 description: '',
                 dueDate:'',
                 formattedDueDate:'',
-                assignee: 1,
-                status: 1
+                assignee: '1',
+                status: '1'
             }
         }
     }
@@ -45,8 +46,8 @@ class NewTask extends Component{
                 description: '',
                 dueDate:'',
                 formattedDueDate:'',
-                assignee: 1,
-                status: 1
+                assignee: '1',
+                status: '1'
             }
         });
     }
@@ -72,9 +73,9 @@ class NewTask extends Component{
         this.setState({ task: task });
     }
 
-    handleDateChanged(value, formattedValue) {
+    handleDateChanged(selectedDay, modifiers, dayPickerInput) {
         var task = this.state.task;
-        Object.assign(task, {dueDate: value, formattedDueDate: formattedValue});
+        task.dueDate = moment(selectedDay).format('MM-DD-YYYY');
         this.setState({ task: task });
     }
 
@@ -85,7 +86,6 @@ class NewTask extends Component{
     }
 
     handleAssigneeChanged(e) {
-        debugger;
         var task = this.state.task;
         task.assignee = e.target.value;
         this.setState({task: task});
@@ -131,7 +131,7 @@ class NewTask extends Component{
 
                         <FormGroup>
                             <ControlLabel>Due Date</ControlLabel>
-                            <DayPickerInput/>
+                            <DayPickerInput onDayChange={this.handleDateChanged}/>
                         </FormGroup>
             
                         <FormGroup>
