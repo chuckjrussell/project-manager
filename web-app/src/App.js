@@ -4,7 +4,7 @@ import 'bootstrap';
 import '@coreui/coreui';
 import '@coreui/coreui/dist/css/bootstrap.css';
 import '@coreui/coreui/dist/css/coreui.css';
-import Tasks from './components/Tasks/Tasks';
+import TasksPage from './components/Tasks/Tasks';
 import BudgetPage from './components/Budget/BudgetPage';
 import Home from './components/Home/Home';
 import Header from './components/common/Header';
@@ -21,7 +21,7 @@ class App extends Component {
           <Header />
             <div className="container">
                 <Route exact path='/' component={Home} />
-                <Route path='/tasks' component={Tasks} />
+                <Route path='/tasks' component={TasksPage} />
                 <Route path='/budget' component={BudgetPage} />
             </div>
           </div>

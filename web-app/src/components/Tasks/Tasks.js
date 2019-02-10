@@ -4,7 +4,7 @@ import TaskList from './TaskList';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import {Route} from 'react-router';
 
-class Tasks extends Component{
+class TasksPage extends Component{
 
 
     render(){
@@ -25,4 +25,4 @@ class Tasks extends Component{
     };
 }
 
-export default Tasks;
+export default TasksPage;
