@@ -8,6 +8,8 @@ import {connect} from 'react-redux';
 import * as taskActions from '../../actions/taskActions';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import moment from 'moment';
+import {bindActionCreators} from 'redux';
+import PropTypes from 'prop-types';
 
 class NewTask extends Component{
 
@@ -25,16 +27,20 @@ class NewTask extends Component{
         this.handleStatusChanged = this.handleStatusChanged.bind(this);
         this.handleAssigneeChanged = this.handleAssigneeChanged.bind(this);
 
+        console.log(props);
+
         this.state = {
-            show: false,
-            task: {
-                title: '',
-                description: '',
-                dueDate:'',
-                formattedDueDate:'',
-                assignee: '1',
-                status: '1'
-            }
+            show: Boolean(props.taskId),
+            task: Object.assign({}, props.task)
+        }
+    }
+
+    componentWillReceiveProps(nextProps){
+        if( this.props.task.id != nextProps.task.id ){
+            this.setState({
+                task: Object.assign({}, nextProps.task),
+                show: Boolean(nextProps.task.id)
+            });
         }
     }
 
@@ -50,10 +56,11 @@ class NewTask extends Component{
                 status: '1'
             }
         });
+        this.context.router.history.push('/tasks');
     }
 
     handleSave(){
-        this.props.dispatch(taskActions.createTask(this.state.task));
+        this.props.actions.saveTask(this.state.task);
         this.handleClose();
     }
   
@@ -107,14 +114,14 @@ class NewTask extends Component{
                             type="text"
                             label="Title"
                             placeholder="Title"
-                            value={this.state.title}
+                            value={this.state.task.title}
                             onChange={this.handleTitleChanged}/>
 
                         <InputGroup id="formControlsText"
                             componentClass="textarea"
                             label="Description"
                             placeholder="Description"
-                            value={this.state.description}
+                            value={this.state.task.description}
                             onChange={this.handleDescriptionChanged}/>
 
                         <FormGroup>
@@ -157,11 +164,34 @@ class NewTask extends Component{
     };
 }
 
+NewTask.contextTypes = {
+    router: PropTypes.object
+}
+
+function getTaskById(taskId, tasks) {
+    const task = tasks.filter(task => task.id === taskId);
+    if (task) return task[0]; 
+    return null;
+}
+
 function mapStateToProps(state, ownProps){
+    let task = { title: '', description: '', dueDate:'', formattedDueDate:'', assignee: '1', status: '1' };
+    
+    if( ownProps.taskId && state.tasks.length > 0){
+        task = getTaskById(ownProps.taskId, state.tasks);
+    }
+    
     return {
+        task: task,
         statuses: state.statuses, 
         users: state.users
     }
 }
 
-export default connect(mapStateToProps)(NewTask);
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(taskActions, dispatch)
+      };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewTask);

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './App.css';
 import 'bootstrap';
 import '@coreui/coreui';
 import '@coreui/coreui/dist/css/bootstrap.css';
 import '@coreui/coreui/dist/css/coreui.css';
+import './App.css';
 import TasksPage from './components/Tasks/Tasks';
 import BudgetPage from './components/Budget/BudgetPage';
 import Home from './components/Home/Home';

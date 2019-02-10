@@ -11,7 +11,7 @@ const TasksHeader = (props) => {
             </div>
 
             <div className="form-inline my-2 my-lg-0">
-                <NewTask />
+                <NewTask taskId={props.taskId}/>
             </div>
         </nav>
     );

@@ -1,8 +1,12 @@
 import * as actions from './actionTypes';
 import taskApi from '../api/tasks/taskApi';
 
-export function createTask(task) {
-    return {type: actions.CREATE_TASK, task};
+export function createTaskSuccess(task) {
+    return {type: actions.CREATE_TASK_SUCCESS, task};
+}
+
+export function updateTaskSuccess(task) {
+    return {type: actions.UPDATE_TASK_SUCCESS, task};
 }
 
 export function loadTasksSuccess(tasks){
@@ -22,7 +26,9 @@ export function loadTasks() {
 export function saveTask(task) {
     return function(dispatch) {
         return taskApi.saveTask(task).then(task => {
-            dispatch()
+            task.id ? dispatch(updateTaskSuccess(task)) : dispatch(createTaskSuccess(task))
+        }).catch(err => {
+            throw(err);
         })
     }
 }

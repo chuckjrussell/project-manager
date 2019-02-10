@@ -1,6 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
+/web-app/node_modules
+web-app/node-modules
 /node_modules
 /.pnp
 .pnp.js
