@@ -127,7 +127,7 @@ class NewTask extends Component{
                         <FormGroup>
                             <ControlLabel>Status</ControlLabel>
                             <select className="form-control" 
-                                    value={this.state.statusId} 
+                                    value={this.state.task.status} 
                                     onChange={this.handleStatusChanged}>
                                     {
                                         this.props.statuses.map(status => {
@@ -144,7 +144,7 @@ class NewTask extends Component{
                         <FormGroup>
                             <ControlLabel>Assignee</ControlLabel>
                             <select className="form-control" 
-                                    value={this.state.assignee} 
+                                    value={this.state.task.assignee} 
                                     onChange={this.handleAssigneeChanged}>
                                 {this.props.users.map(user => {
                                     return (
