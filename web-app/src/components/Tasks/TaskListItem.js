@@ -34,7 +34,7 @@ class TaskListItem extends Component {
         return (
             <tr>
                 <td className={classes}>
-                    <Link to={'/tasks/' + this.props.task.id}>{this.props.task.title}</Link>
+                    <Link to={'/tasks/' + this.props.task.id} className="text-truncate">{this.props.task.title}</Link>
                 </td>
                 <td>{this.state.user.firstName + ' ' + this.state.user.lastName}</td>
                 <td>{this.props.task.dueDate}</td>
