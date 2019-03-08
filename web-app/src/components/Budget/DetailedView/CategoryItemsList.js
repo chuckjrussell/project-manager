@@ -1,14 +1,38 @@
-import React, {Component} from 'react';
+import React from 'react';
 import BudgetItem from './BudgetItem';
+import PropTypes from 'prop-types';
 
 const CategoryItemsList = (props) => {
     return (
         <div>
-            <BudgetItem />
-            <BudgetItem />
-            <BudgetItem />
+            <table className="table table-hover">
+                <thead>
+                    <tr>
+                        <td>Item</td>
+                        <td>Paid</td>
+                        <td>Discount</td>
+                        <td>Deposit</td>
+                        <td>Refundable</td>
+                        <td>Total Cost</td>
+                        <td>Outstanding</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        props.items.map(item => {
+                            return (
+                                <BudgetItem key={item.id} item={item} />
+                            );
+                        })
+                    }
+                </tbody>
+            </table>
         </div>
     )
 };
+
+CategoryItemsList.propTypes = {
+    items: PropTypes.arrayOf(PropTypes.object).isRequired
+}
 
 export default CategoryItemsList;

@@ -52,7 +52,7 @@ class BudgetPage extends Component {
 
     render() {
         return (<div>
-            <DetailedViewPage />
+            <DetailedViewPage categories={budgetItems.categories} />
         </div>);
     }
 }
