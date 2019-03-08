@@ -4,6 +4,7 @@ import '@coreui/coreui';
 import '@coreui/coreui/dist/css/bootstrap.css';
 import '@coreui/coreui/dist/css/coreui.css';
 import './App.css';
+import './common.css';
 import TasksPage from './components/Tasks/Tasks';
 import BudgetPage from './components/Budget/BudgetPage';
 import Home from './components/Home/Home';

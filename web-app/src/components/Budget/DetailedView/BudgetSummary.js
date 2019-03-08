@@ -31,7 +31,15 @@ import React from 'react';
 const BudgetSummary = (props) => {
     return (
         <div>
-            <h4>Totals</h4>
+            <div className="category-header">
+                <h4>Totals</h4>
+                <div className="category-options">
+                    <ul>
+                        <li><a href="#new">Status</a></li>
+                        <li><a href="#edit">Category</a></li>
+                    </ul>
+                </div>
+            </div>
             <PieChart width={250} height={250}>
                 <Pie data={data02} dataKey="value" nameKey="name" outerRadius={80} fill="#82ca9d" label />
             </PieChart>

@@ -49,9 +49,11 @@ const budgetItems = {
 };
 
 class BudgetPage extends Component {
-
     render() {
-        return (<div>
+        return (<div className="page-container">
+            <div className="">
+            
+            </div>
             <DetailedViewPage categories={budgetItems.categories} />
         </div>);
     }

@@ -2,6 +2,7 @@ import React from 'react';
 import Category from './Category';
 import PropTypes from 'prop-types';
 import BudgetSummary from './BudgetSummary';
+import {connect} from 'react-redux';
 
 const DetailedViewPage = (props) => {
     return (
@@ -20,9 +21,10 @@ const DetailedViewPage = (props) => {
     )
 };
 
-DetailedViewPage.propTypes = {
-    categories: PropTypes.arrayOf(PropTypes.object).isRequired
-};
+function mapStateToProps(state, ownProps){
+    return {
+        categories: state.categories
+    }
+}
 
-
-export default DetailedViewPage;
+export default connect(mapStateToProps)(DetailedViewPage);

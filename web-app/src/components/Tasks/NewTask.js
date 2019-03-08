@@ -27,8 +27,6 @@ class NewTask extends Component{
         this.handleStatusChanged = this.handleStatusChanged.bind(this);
         this.handleAssigneeChanged = this.handleAssigneeChanged.bind(this);
 
-        console.log(props);
-
         this.state = {
             show: Boolean(props.taskId),
             task: Object.assign({}, props.task)
