@@ -50,8 +50,8 @@ function replaceAll(str, find, replace) {
   }
   
   //This would be performed on the server in a real app. Just stubbing in.
-  const generateId = (task) => {
-    return replaceAll(task.title, ' ', '-');
+  const generateId = (category) => {
+    return replaceAll(category.name, ' ', '-');
   };
 
 class CategoriesApi {
@@ -67,7 +67,7 @@ class CategoriesApi {
     static saveCategory(category){
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                if( category.title.length < 1 ){
+                if( category.name.length < 1 ){
                     reject('Categories must have a non-empty title.');
                 }
 
@@ -77,6 +77,7 @@ class CategoriesApi {
                 }
                 else {
                     category.id = generateId(category);
+                    category.items = [];
                     categories.push(category);
                 }
 

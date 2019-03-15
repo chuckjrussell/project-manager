@@ -1,7 +1,6 @@
-.category-container{
-    margin-top: 3rem;
-}
 
-.category-container:first-child {
-    margin-top: 0;
+
+.category-header-text {
+    text-transform: uppercase;
+    font-size: 125%;
 }

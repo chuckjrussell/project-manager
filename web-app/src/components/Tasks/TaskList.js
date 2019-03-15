@@ -17,10 +17,10 @@ class TaskList extends Component{
         return(
             <div>
                 {tasksHeader}
-                <div>
+                <div className="card-container">
                     <table className="table table-hover">
                         <thead>
-                            <tr>
+                            <tr className="table-row-borderless">
                                 <td>Description</td>
                                 <td>Assignee</td>
                                 <td>Due Date</td>

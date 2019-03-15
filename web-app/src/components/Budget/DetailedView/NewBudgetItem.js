@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 import '@coreui/coreui';
 import {Button, Modal, FormGroup, ControlLabel} from 'react-bootstrap';
 import InputGroup from '../common/forms/InputGroup';
-import 'react-day-picker/lib/style.css';
-import './NewTask.css';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
 import * as taskActions from '../../actions/taskActions';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import moment from 'moment';
+import {bindActionCreators} from 'redux';
 import PropTypes from 'prop-types';
 
-class NewTask extends Component{
+class NewBudgetItem extends Component{
 
     constructor(props, context){
         
@@ -34,7 +32,6 @@ class NewTask extends Component{
     }
 
     componentWillReceiveProps(nextProps){
-        // eslint-disable-next-line
         if( this.props.task.id != nextProps.task.id ){
             this.setState({
                 task: Object.assign({}, nextProps.task),
@@ -134,11 +131,6 @@ class NewTask extends Component{
                                     })}
                             </select>
                         </FormGroup>
-
-                        <FormGroup>
-                            <ControlLabel>Due Date</ControlLabel>
-                            <DayPickerInput onDayChange={this.handleDateChanged}/>
-                        </FormGroup>
             
                         <FormGroup>
                             <ControlLabel>Assignee</ControlLabel>
@@ -163,7 +155,7 @@ class NewTask extends Component{
     };
 }
 
-NewTask.contextTypes = {
+NewBudgetItem.contextTypes = {
     router: PropTypes.object
 }
 
@@ -193,4 +185,4 @@ function mapDispatchToProps(dispatch) {
       };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewTask);
+export default connect(mapStateToProps, mapDispatchToProps)(NewBudgetItem);

@@ -8,7 +8,7 @@ class TasksPage extends Component{
         return(
             <div>
                 <BrowserRouter>
-                    <div className="container">
+                    <div className="page-container">
                         <Switch>
                             <Route path='/tasks/:id' component={TaskList} />
                             <Route path='/tasks' component={TaskList} />

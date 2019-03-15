@@ -1,13 +1,14 @@
 import React from 'react';
 import BudgetItem from './BudgetItem';
 import PropTypes from 'prop-types';
+import './CategoryItemsList.css';
 
 const CategoryItemsList = (props) => {
     return (
         <div>
             <table className="table table-hover">
                 <thead>
-                    <tr>
+                    <tr className="table-row-borderless">
                         <td>Item</td>
                         <td>Paid</td>
                         <td>Discount</td>

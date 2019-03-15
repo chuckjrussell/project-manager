@@ -1,6 +1,10 @@
 import * as actions from './actionTypes';
 import categoriesApi from '../api/budget/categoriesApi';
 
+export function requestCategoryAsync(){
+    return {type: actions.CATEGORY_ASYNC_REQUESTED};
+}
+
 export function createCategorySuccess(category) {
     return {type: actions.CREATE_CATEGORY_SUCCESS, category};
 }
@@ -27,8 +31,9 @@ export function loadCategories() {
 
 export function saveCategory(category) {
     return function(dispatch) {
-        return categoriesApi.saveCategory(category).then(category => {
-            category.id ? dispatch(updateCategorySuccess(category)) : dispatch(createCategorySuccess(category))
+        dispatch(requestCategoryAsync());
+        return categoriesApi.saveCategory(category).then(newCategory => {
+            category.id ? dispatch(updateCategorySuccess(newCategory)) : dispatch(createCategorySuccess(newCategory))
         }).catch(err => {
             throw(err);
         })

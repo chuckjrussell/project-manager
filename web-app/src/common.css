@@ -7,7 +7,7 @@
 .category-options ul {
     display: flex;
     float: right;
-    margin-bottom: 0;
+    margin-bottom: 15px;
 }
 
 .category-options ul li {
@@ -23,9 +23,17 @@
     border-left: 0px;
 }
 
-.category-options ul li:last-child {
+.card-container{
+    margin-top: 20px;
+    background: #f0f3f5;
+    padding: 20px;
+    border-radius: 10px;
 }
 
-.page-options {
+.card-container:first-child {
+    margin-top: 0;
+}
 
+.table-row-borderless td{
+    border-top: 0;
 }

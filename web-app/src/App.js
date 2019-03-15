@@ -26,7 +26,7 @@ class App extends Component {
                 <Route path='/budget' component={BudgetPage} />
             </div>
           </div>
-          <Footer/>
+          {/* <Footer/> */}
         </div>
       </BrowserRouter>
     );

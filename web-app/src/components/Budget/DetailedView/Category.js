@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 import './Category.css';
 
 const Category = (props) => {
+
     return (
-        <div className="category-container">
+        <div className="card-container">
             <div className="category-header">
-                <h4>{props.category.name}</h4>
+                <h4 className="category-header-text">{props.category.name}</h4>
                 <div className="category-options">
                     <ul>
                         <li><a href="#new">New +</a></li>
@@ -15,6 +16,7 @@ const Category = (props) => {
                     </ul>
                 </div>
             </div>
+
             <div>
                 <CategoryItemsList items={props.category.items}/>
             </div>
