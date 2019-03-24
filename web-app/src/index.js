@@ -1,6 +1,11 @@
 import React from 'react';
+import 'bootstrap';
+import '@coreui/coreui';
+import '@coreui/coreui/dist/css/bootstrap.css';
+import '@coreui/coreui/dist/css/coreui.css';
 import './index.css';
 import 'react-bootstrap';
+import 'fontisto/css/fontisto/fontisto.css';
 import App from './App';
 import {render} from 'react-dom';
 import configureStore from './store/configureStore';

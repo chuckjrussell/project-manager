@@ -1,3 +1,8 @@
+:root{ 
+  --main-accent-color: #5b4861;
+  --main-accent-color-alt: #563d5e;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -6,9 +11,4 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }

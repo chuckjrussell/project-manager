@@ -1,7 +1,10 @@
-.category-header {
-    display: flex;
-    justify-content: space-between;
-    align-items:center;
+
+
+h1 {
+    font-family: "Oxygen";
+    font-size: 1.5rem;
+    color: var(--main-accent-color);
+    line-height: 75px;
 }
 
 .category-options ul {
@@ -16,7 +19,7 @@
     padding-left: 1rem;
     padding-right: 1rem;
     text-transform: uppercase;
-    font-size: 75%;
+    font-size: 0.75rem;
 }
 
 .category-options ul li:first-child {
@@ -24,10 +27,8 @@
 }
 
 .card-container{
-    margin-top: 20px;
-    background: #f0f3f5;
-    padding: 20px;
-    border-radius: 10px;
+    padding-top: 20px;
+    border-top: 1px gray solid;
 }
 
 .card-container:first-child {
@@ -36,4 +37,19 @@
 
 .table-row-borderless td{
     border-top: 0;
+}
+  
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    font-family: "Oxygen";
+    font-size: 1.25rem;
+    color: var(--main-accent-color);
+}
+
+.category-header-text {
+    font-weight: bold;
+    font-size: 1.25rem;
 }

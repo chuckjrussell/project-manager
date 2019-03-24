@@ -1,0 +1,12 @@
+.main-nav {
+    min-height: 100%;
+    width: 125px;
+    background: var(--main-accent-color);
+}
+
+.main-nav ul {
+    height: 100%;
+    width: 125px;
+    list-style: none;
+    padding: 0;
+}
